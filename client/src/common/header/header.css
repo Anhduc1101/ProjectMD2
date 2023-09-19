@@ -1,0 +1,8 @@
+.custom-navbar-nav .active,
+.custom-navbar-nav a:hover {
+  border-bottom: 5px solid goldenrod;
+  -webkit-transition: 0.15s all ease-out;
+  -o-transition: 0.15s all ease-out;
+  transition: 0.15s all ease-out;
+  visibility: visible;
+}

@@ -1,0 +1,35 @@
+{
+  "category": [
+    {
+      "category_id":1,
+      "category_name":"Wood Sofa"
+    },
+    {
+      "category_id":2,
+      "category_name":"Felt Sofa"
+    },
+    {
+      "category_id":1,
+      "category_name":"Leather Sofa"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Đồng hồ đeo tay",
+      "price": 12000000,
+      "description": "Đồng hồ đẹp, đẳng cấp châu âu, không ở đâu có!!",
+      "from": "Đăng Quang Watch",
+      "category_id": 4,
+      "image": "https://product.hstatic.net/1000391653/product/daj354_31128cc44baf4313997e93e46e0b93d8_1024x1024.jpg",
+      "discount": 0,
+      "quantity": 100
+    }
+  ],
+  "users":[
+    {
+      
+    }
+  ]
+  
+}
