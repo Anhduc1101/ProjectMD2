@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Testimonial() {
   return (
-    <div>
-      <>
+    <>
+      <div className="flex" style={{ paddingBottom:0 }}>
         {/* Start Testimonial Slider */}
         <div className="testimonial-section before-footer-section">
           <div className="container">
@@ -23,12 +23,12 @@ export default function Testimonial() {
                       <span className="fa fa-chevron-right" />
                     </span>
                   </div>
-                  <div className="testimonial-slider">
+                  <div className="testimonial-slider d-flex">
                     <div className="item">
                       <div className="row justify-content-center">
                         <div className="col-lg-8 mx-auto">
                           <div className="testimonial-block text-center">
-                            <blockquote className="mb-5">
+                            <blockquote className="mb-0">
                               <p>
                                 “Donec facilisis quam ut purus rutrum lobortis.
                                 Donec vitae odio quis nisl dapibus malesuada.
@@ -130,7 +130,7 @@ export default function Testimonial() {
           </div>
         </div>
         {/* End Testimonial Slider */}
-      </>
-    </div>
+      </div>
+    </>
   );
 }

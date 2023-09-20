@@ -95,8 +95,8 @@ export default function Header() {
               <NavLink to="/" className="nav-link" href="index.html">
                 <li className="nav-item ">Home</li>
               </NavLink>
-              <NavLink to="/products" className="nav-link" href="shop.html">
-                <li>Products</li>
+              <NavLink to="/shop" className="nav-link" href="shop.html">
+                <li>Shop</li>
               </NavLink>
               <NavLink to="/about" className="nav-link" href="about.html">
                 <li>About us</li>
@@ -115,7 +115,7 @@ export default function Header() {
                   {" "}
                   <NavLink className="nav-link" to="/cart">
                     <li>
-                      <img src="images/cart.svg" />
+                      <img src="/images/cart.svg" />
                     </li>
                   </NavLink>
                   <li className="d-flex align-items-center gap-2">

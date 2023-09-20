@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase/configFbase";
@@ -6,9 +6,72 @@ import { Input } from "antd";
 import { Button } from "antd";
 import Header from "../../common/header/Header";
 import Footer from "../../common/Footer";
+import Password from "antd/es/input/Password";
+import { validateEmail, validatePassword } from "../../utils/validateData";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  //dang nhap voi API
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const handleChangeInput = (e) => {
+    // console.log(e.target);
+    // lay name vs value tu input
+    const { value, name } = e.target;
+    // kiem tra name va gan gia tri
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    } else {
+      return;
+    }
+  };
+
+  // ham validate du lieu
+  const validateData = (nameInput, valueInput) => {
+    switch (nameInput) {
+      case "email":
+        if (valueInput === "") {
+          setEmailError("Please enter a valid email");
+        } else if (!validateEmail(valueInput)) {
+          setEmailError("ko dung dinh dang");
+        } else {
+          setEmailError(null);
+        }
+        return;
+      case "password":
+        if (valueInput === "") {
+          setPasswordError("Please enter a valid password");
+        } else if (!validatePassword(valueInput)) {
+          setPasswordError("ko dung dinh dang");
+        } else {
+          setPasswordError(null);
+        }
+        return;
+
+      default:
+        break;
+    }
+  };
+
+  // ham onsubmit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateData("email", email);
+    validateData("password", password);
+    if (email && password) {
+      const newUser = {
+        email,
+        password,
+      };
+      console.log(newUser);
+    }
+  };
 
   // ddang nhap voi google
   const signInWithGoogle = () => {
@@ -32,36 +95,49 @@ export default function Login() {
     <>
       <Header />
       <div className="flex items-center justify-center min-h-screen w-50 mt-5 m-auto">
-        <form className="p-6 border rounded px-3 py-3">
+        <form className="p-6 border rounded px-3 py-3" onSubmit={handleSubmit}>
           <h3 className="text-center">Log In</h3>
           <div className="mb-4 ">
             <label htmlFor=""> Email</label>
             <Input
+              type="email"
               status="error"
               id="email"
-              className="mt-2"
+              className={`mt-2 ${emailError}`}
               placeholder="Enter email..."
+              value={email}
+              onChange={handleChangeInput}
+              name="email"
             />
-            <div className="mt-1 text-red-400">Email cannot be blank</div>
+            {emailError && (
+              <div className="mt-1 text-red-400">{emailError}</div>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor=""> Password</label>
             <Input
+              type="password"
               status="error"
               id="password"
-              className="mt-2"
+              className={`mt-2 ${passwordError}`}
               placeholder="Enter password..."
+              value={password}
+              onChange={handleChangeInput}
+              name="password"
             />
-            <div className="mt-1 text-red-400">Password cannot be blank</div>
+            {passwordError && (
+              <div className="mt-1 text-red-400">{passwordError}</div>
+            )}
           </div>
           <div className="mt-2">
-            <Button
+            <button
               style={{ alignItems: "center", width: "100%" }}
               className=""
+              type="submit"
             >
               {" "}
               Log In
-            </Button>
+            </button>
           </div>
           <div
             style={{

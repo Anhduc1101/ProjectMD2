@@ -17,8 +17,9 @@ const app = initializeApp(firebaseConfig);
 // Tạo tham chiếu đến dịch vụ lư trữ 
 // đc sử dụng để tham chiếu trong toàn bộ ứng dụng
 const storage = getStorage(app);
-
 // export ra bên ngoài để sử dụng
 export { storage };
+  
+  
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();

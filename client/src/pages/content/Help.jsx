@@ -4,10 +4,13 @@ export default function Help() {
   return (
     <>
       {/* Start We Help Section */}
-      <div className="we-help-section">
+      <div
+        className="we-help-section"
+        style={{ paddingTop: "14rem", paddingBottom: 0 }}
+      >
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-lg-7 mb-5 mb-lg-0">
+            <div className="col-lg-7  mb-5 mb-lg-0">
               <div className="imgs-grid">
                 <div className="grid grid-1">
                   <img src="images/img-grid-1.jpg" alt="Untree.co" />

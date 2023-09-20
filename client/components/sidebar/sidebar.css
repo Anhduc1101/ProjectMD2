@@ -1,0 +1,43 @@
+.d-sidebar {
+  background-color: RGB(59, 93, 80);
+  width: 20vw;
+  font-size: 16px;
+}
+.d-logo {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  border-bottom: 1px solid;
+}
+.d-tittle {
+  color: white;
+  margin-right: 1px;
+  font-size: 24px;
+}
+.d-container-sidebar {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  /* background-color: black; */
+}
+.d-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #fff;
+  text-decoration: none !important;
+}
+.d-content p {
+  margin: 5px;
+  color: #adadad;
+}
+
+.d-content p:hover {
+  color: #fff;
+}
+
+.d-content p.active {
+  background-color: wheat;
+  border-radius: 10px;
+}

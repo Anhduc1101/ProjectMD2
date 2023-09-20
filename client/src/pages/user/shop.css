@@ -1,0 +1,9 @@
+.d-box{
+    display: flex;
+}
+
+.d-sidebar-left{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px;
+    width: 20vw;
+}

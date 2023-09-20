@@ -17,6 +17,7 @@ import CategoryManagement from "./pages/private/admin/category-manager/CategoryM
 import OrderManagement from "./pages/private/admin/order-manager/OrderManagement";
 import ProductManagement from "./pages/private/admin/product-manager/ProductManagement";
 import UserManagement from "./pages/private/admin/user-manager/UserManagement";
+import Shop from "./pages/user/Shop";
 
 function App() {
   return (
@@ -41,8 +42,9 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/" element={<Index />} />
         <Route path="/thankspage" element={<ThanksPage />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/description" element={<Description />} />
+        <Route path="/shop" element={<Shop />} />
+        {/* <Route path="/products" element={<Products />} /> */}
+        <Route path="/description/:id" element={<Description />} />
       </Routes>
     </>
   );

@@ -4,7 +4,10 @@ export default function Reason() {
   return (
     <>
       {/* Start Why Choose Us Section */}
-      <div className="why-choose-section">
+      <div
+        className="why-choose-section"
+        style={{ paddingTop: 0, paddingBottom: 150 }}
+      >
         <div className="container">
           <div className="row justify-content-between align-items-center">
             <div className="col-lg-6">

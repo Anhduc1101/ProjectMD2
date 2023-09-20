@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../common/header/Header";
 import Footer from "../../common/Footer";
 import { Pagination, Menu, Input } from "antd";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -13,19 +14,60 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-const items = [
-  getItem("Wood Sofa"),
-  getItem("Felt Sofa"),
-  getItem("Leather Sofa"),
-];
 
 const { Search } = Input;
 
 export default function Products() {
   const onSearch = (value, _e, info) => console.log(info?.source, value);
-  const onClick = (e) => {
-    console.log("click ", e);
+  // const onClick = (e) => {
+  //   console.log("click ", e);
+  // };
+
+  const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState(0);
+  const [products, setProducts] = useState([]);
+
+  // item hien thi ra menu
+  const items = categories.map((category) =>
+    getItem(category.category_name, category.category_id)
+  );
+
+  // lay danh sach tat ca category
+  useEffect(() => {
+    axios
+      .get(" http://localhost:3000/categories")
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  // lay id cua category
+  const getCategoryId = (e) => {
+    setCategoryId(e.key);
   };
+
+  // goi API lay thong tin san pham
+  const loadDataProduct = () => {
+    axios
+      .get("http://localhost:3000/products")
+      .then((response) => {
+        // neu khong co categoryId
+        if (categoryId == 0) {
+          setProducts(response.data);
+        } else {
+          const listProducts = response.data.filter(
+            (p) => p.category_id === categoryId
+          );
+          console.log(listProducts);
+          // sau moi lan loc thi set lai
+          setProducts(listProducts);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadDataProduct();
+  }, [categoryId]);
   return (
     <div>
       <Header />
@@ -49,16 +91,15 @@ export default function Products() {
       {/* End Hero Section */}
       <div style={{ display: "flex", marginTop: "20px" }}>
         <div className="left">
+          {/* {categories.map((cat) => ( */}
           <Menu
-            onClick={onClick}
-            style={{
-              width: 256,
-            }}
+            onClick={getCategoryId}
             defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
+            // defaultOpenKeys={["sub1"]}
             mode="inline"
             items={items}
           />
+          {/* ))} */}
         </div>
 
         <div
@@ -79,12 +120,11 @@ export default function Products() {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="card my-2 shadow-0">
                 <Link to="/description" className="img-wrap">
-                  <img 
+                  <img
                     src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
                     className="card-img-top"
                     style={{
                       aspectRatio: "1 / 1",
-                  
                     }}
                   />
                 </Link>
